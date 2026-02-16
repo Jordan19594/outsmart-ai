@@ -7,6 +7,11 @@
     <meta name="description" content="Can you spot an AI scam? Take our free 2-minute quiz to find your protection gaps. Outsmart AI is the monthly guide helping seniors and families stay safe from voice cloning, deepfakes, and AI-powered fraud.">
     <meta property="og:title" content="Could You Spot an AI Scam? Most People Can't.">
     <meta property="og:description" content="Take the free Scam Protection Quiz. Get a personalized report showing where you're exposed — and how to fix it. Based on FBI, FTC, and AARP research.">
+    <meta property="og:image" content="hero-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="hero-og.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -42,10 +47,20 @@
             --font-body: 'DM Sans', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
 
+            /* Type Scale */
+            --text-xs: 12px;
+            --text-sm: 14px;
+            --text-base: 17px;
+            --text-lg: 19px;
+            --text-xl: 24px;
+            --text-2xl: 32px;
+            --text-3xl: 42px;
+
             /* Spacing */
-            --section-gap: clamp(80px, 10vw, 140px);
+            --section-gap: clamp(80px, 10vw, 120px);
             --content-width: 1140px;
             --narrow-width: 780px;
+            --reading-width: 640px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,8 +75,8 @@
             font-family: var(--font-body);
             color: var(--text-dark);
             background: var(--cream);
-            line-height: 1.65;
-            font-size: 17px;
+            line-height: 1.5;
+            font-size: var(--text-base);
             overflow-x: hidden;
         }
 
@@ -87,7 +102,7 @@
         h1, h2, h3, h4 {
             font-family: var(--font-display);
             font-weight: 400;
-            line-height: 1.15;
+            line-height: 1.2;
         }
 
         /* Grain overlay for texture */
@@ -267,7 +282,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(42px, 5.5vw, 72px);
+            font-size: clamp(40px, 5vw, 62px);
             color: var(--navy);
             letter-spacing: -0.03em;
             margin-bottom: 24px;
@@ -376,7 +391,7 @@
             font-family: var(--font-display);
             font-size: 36px;
             color: var(--coral);
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 6px;
         }
 
@@ -387,7 +402,7 @@
         }
 
         .stat-card-source {
-            font-size: 11px;
+            font-size: var(--text-xs);
             color: var(--text-light);
             margin-top: 6px;
             font-family: var(--font-mono);
@@ -481,10 +496,11 @@
         }
 
         .problem-text p {
-            font-size: 17px;
+            font-size: var(--text-base);
             color: rgba(253, 246, 236, 0.8);
             margin-bottom: 20px;
-            line-height: 1.7;
+            line-height: 1.6;
+            max-width: var(--reading-width);
         }
 
         .problem-text p strong {
@@ -526,7 +542,7 @@
             font-family: var(--font-display);
             font-size: clamp(32px, 3.5vw, 44px);
             color: var(--amber-light);
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 8px;
         }
 
@@ -644,7 +660,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
+            font-size: var(--text-xs);
             color: var(--cream);
             font-weight: 600;
             margin-left: -6px;
@@ -826,7 +842,7 @@
         .quiz-option-text {
             font-size: 16px;
             color: var(--text-dark);
-            font-weight: 450;
+            font-weight: 400;
         }
 
         .quiz-nav {
@@ -1664,7 +1680,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
                     <span class="hero-meta">No credit card needed. Takes 2 minutes.</span>
-                    <span class="hero-meta" style="display:block;margin-top:8px;font-size:0.85rem;opacity:0.7;">Based on public data from the FBI, FTC, and AARP Fraud Watch Network</span>
+                    <span class="hero-meta" style="display:block;margin-top:8px;font-size:0.8rem;opacity:0.7;">Based on public data from the FBI, FTC, and AARP Fraud Watch Network</span>
                 </div>
             </div>
 
