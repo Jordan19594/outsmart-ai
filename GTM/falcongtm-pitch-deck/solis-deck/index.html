@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FalconGTM x Solis Therapy — B2B Channel Launch</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Solis Therapy brand palette */
+            --black: #000000;
+            --dark: #0a0a0a;
+            --card: #111111;
+            --card-border: rgba(255,255,255,0.06);
+            --pink: #ea498a;
+            --pink-dim: rgba(234, 73, 138, 0.12);
+            --pink-glow: rgba(234, 73, 138, 0.06);
+            --white: #ffffff;
+            --grey: #8a8a8a;
+            --light-grey: #b0b0b0;
+            --off-white: #e8e8e8;
+            --ivory: #f5f4f0;
+            --charcoal: #1a1a1a;
+
+            --font: 'Barlow', system-ui, sans-serif;
+
+            --title-size: clamp(2rem, 6vw, 4.5rem);
+            --h2-size: clamp(1.5rem, 4vw, 2.8rem);
+            --h3-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            --body-size: clamp(0.8rem, 1.4vw, 1.05rem);
+            --small-size: clamp(0.7rem, 1vw, 0.85rem);
+            --mono-size: clamp(0.6rem, 0.85vw, 0.72rem);
+
+            --slide-padding: clamp(1.5rem, 5vw, 5rem);
+            --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+            --element-gap: clamp(0.5rem, 1.2vw, 1rem);
+
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration: 0.7s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--black);
+            color: var(--off-white);
+            overflow-x: hidden;
+            height: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: var(--slide-padding);
+            background: var(--black);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-height: 100%;
+            max-width: min(90vw, 1100px);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: clamp(1rem, 3vw, 2rem);
+            right: clamp(1rem, 3vw, 2rem);
+            font-family: var(--font);
+            font-size: var(--small-size);
+            font-weight: 500;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.05em;
+        }
+
+        /* Typography */
+        .headline {
+            font-family: var(--font);
+            font-size: var(--title-size);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+
+        .headline-italic {
+            font-family: var(--font);
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 600;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        .subhead {
+            font-size: var(--body-size);
+            font-weight: 400;
+            color: var(--grey);
+            line-height: 1.65;
+            max-width: min(85vw, 560px);
+        }
+
+        .section-label {
+            font-family: var(--font);
+            font-size: var(--mono-size);
+            font-weight: 600;
+            color: var(--pink);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: var(--element-gap);
+        }
+
+        .h2 {
+            font-family: var(--font);
+            font-size: var(--h2-size);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .h2-italic {
+            font-family: var(--font);
+            font-size: clamp(1.6rem, 4.5vw, 3.2rem);
+            font-weight: 600;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .wordmark {
+            font-family: var(--font);
+            font-weight: 800;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            color: var(--white);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .wordmark span { font-weight: 500; color: var(--grey); }
+
+        /* Cards */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            width: 100%;
+            max-width: min(90vw, 1000px);
+        }
+
+        .step-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            padding: clamp(1rem, 2vw, 1.75rem);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.4rem, 1vh, 0.75rem);
+        }
+
+        .step-number {
+            font-family: var(--font);
+            font-size: var(--small-size);
+            color: var(--pink);
+            font-weight: 600;
+        }
+
+        .step-title {
+            font-family: var(--font);
+            font-size: var(--h3-size);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .step-body {
+            font-size: var(--small-size);
+            font-weight: 400;
+            color: var(--grey);
+            line-height: 1.55;
+        }
+
+        .step-stat {
+            font-family: var(--font);
+            font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+            font-weight: 600;
+            color: var(--pink);
+            background: var(--pink-dim);
+            border: 1px solid rgba(234, 73, 138, 0.2);
+            border-radius: 0.5rem;
+            padding: 0.4em 0.7em;
+            margin-top: 0.25rem;
+            display: inline-block;
+            letter-spacing: 0.03em;
+        }
+
+        /* Vertical cards (2-col) */
+        .verticals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            width: 100%;
+            max-width: min(90vw, 800px);
+        }
+
+        .vertical-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.3rem, 0.6vh, 0.5rem);
+        }
+
+        .vertical-icon {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            color: var(--pink);
+            margin-bottom: clamp(0.2rem, 0.4vh, 0.3rem);
+        }
+
+        .vertical-name {
+            font-family: var(--font);
+            font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .vertical-desc {
+            font-size: var(--small-size);
+            color: var(--grey);
+            line-height: 1.45;
+        }
+
+        /* Diff cards */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            width: 100%;
+            max-width: min(90vw, 1000px);
+        }
+
+        .diff-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            padding: clamp(1rem, 2vw, 1.75rem);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.3rem, 0.8vh, 0.6rem);
+        }
+
+        .diff-label {
+            font-family: var(--font);
+            font-size: clamp(0.85rem, 1.8vw, 1.15rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .diff-body {
+            font-size: var(--small-size);
+            color: var(--grey);
+            line-height: 1.55;
+        }
+
+        /* Ivory (light) slide */
+        .slide-ivory {
+            background: var(--ivory);
+        }
+        .slide-ivory .h2 { color: var(--charcoal); }
+        .slide-ivory .h2-italic { color: var(--charcoal); }
+        .slide-ivory .subhead { color: var(--grey); }
+        .slide-ivory .section-label { color: var(--pink); }
+        .slide-ivory .slide-number { color: var(--grey); }
+        .slide-ivory .diff-card {
+            background: var(--white);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+        .slide-ivory .diff-label { color: var(--charcoal); }
+        .slide-ivory .diff-body { color: var(--grey); }
+
+        /* Pricing card */
+        .pricing-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            padding: clamp(1.25rem, 2.5vw, 2rem);
+            text-align: center;
+            max-width: min(85vw, 420px);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.4rem, 0.8vh, 0.75rem);
+        }
+
+        .pricing-amount {
+            font-family: var(--font);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .pricing-original {
+            font-family: var(--font);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            font-weight: 600;
+            color: var(--grey);
+            text-decoration: line-through;
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        .pricing-period {
+            font-family: var(--font);
+            font-size: var(--small-size);
+            font-weight: 500;
+            color: var(--grey);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            font-family: var(--font);
+            font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+            font-weight: 600;
+            color: var(--pink);
+            border: 1px solid rgba(234, 73, 138, 0.3);
+            border-radius: 9999px;
+            padding: 0.25em 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            align-self: center;
+        }
+
+        .pricing-includes {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.25rem, 0.5vh, 0.4rem);
+            margin-top: clamp(0.15rem, 0.3vh, 0.3rem);
+        }
+
+        .pricing-item {
+            font-size: var(--small-size);
+            color: var(--off-white);
+            line-height: 1.4;
+            padding-left: 1.2em;
+            position: relative;
+        }
+
+        .pricing-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.45em;
+            width: 6px;
+            height: 6px;
+            background: var(--pink);
+            border-radius: 50%;
+        }
+
+        /* What you get cards */
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            width: 100%;
+            max-width: min(90vw, 1000px);
+        }
+
+        .delivery-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.3rem, 0.6vh, 0.5rem);
+        }
+
+        .delivery-icon {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            color: var(--pink);
+        }
+
+        .delivery-title {
+            font-family: var(--font);
+            font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .delivery-body {
+            font-size: var(--small-size);
+            color: var(--grey);
+            line-height: 1.55;
+        }
+
+        /* ===== SIGNAL INTELLIGENCE — 3 CARD LAYOUT ===== */
+        .prospect-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            width: 100%;
+            max-width: min(90vw, 1000px);
+        }
+
+        .prospect-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-top: 3px solid var(--pink);
+            border-radius: 1.25rem;
+            padding: clamp(1rem, 2vw, 1.75rem);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.35rem, 0.7vh, 0.6rem);
+        }
+
+        .prospect-name {
+            font-family: var(--font);
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .prospect-meta {
+            font-family: var(--font);
+            font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+            font-weight: 500;
+            color: var(--pink);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1.3;
+        }
+
+        .prospect-signal {
+            font-family: var(--font);
+            font-size: var(--small-size);
+            font-weight: 400;
+            color: var(--light-grey);
+            line-height: 1.55;
+            margin-top: clamp(0.2rem, 0.5vh, 0.4rem);
+            padding-top: clamp(0.4rem, 0.8vh, 0.6rem);
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .prospect-signal strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* ===== TRACK RECORD LOGOS ===== */
+        .logo-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(2rem, 5vw, 4rem);
+            flex-wrap: wrap;
+            margin-top: clamp(1rem, 2vh, 1.75rem);
+            opacity: 0.3;
+        }
+
+        .logo-bar svg {
+            height: clamp(18px, 2.8vw, 30px);
+            fill: var(--white);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity var(--duration) var(--ease-out-expo),
+                        transform var(--duration) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal:nth-child(1) { transition-delay: 0.05s; }
+        .reveal:nth-child(2) { transition-delay: 0.15s; }
+        .reveal:nth-child(3) { transition-delay: 0.25s; }
+        .reveal:nth-child(4) { transition-delay: 0.35s; }
+        .reveal:nth-child(5) { transition-delay: 0.45s; }
+        .reveal:nth-child(6) { transition-delay: 0.55s; }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--pink);
+            z-index: 100;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* Nav dots */
+        .nav-dots {
+            position: fixed;
+            right: clamp(0.75rem, 2vw, 1.5rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 50;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--grey);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            border: none;
+        }
+
+        .nav-dot.active {
+            opacity: 1;
+            background: var(--pink);
+            transform: scale(1.3);
+        }
+
+        /* Responsive */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(1rem, 3vw, 2.5rem);
+                --content-gap: clamp(0.75rem, 1.5vw, 1.25rem);
+                --title-size: clamp(1.75rem, 5vw, 3.5rem);
+            }
+        }
+
+        @media (max-height: 600px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 2.5vw, 1.5rem);
+                --content-gap: clamp(0.5rem, 1vw, 0.75rem);
+                --title-size: clamp(1.5rem, 4.5vw, 2.5rem);
+                --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+            }
+            .nav-dots { display: none; }
+        }
+
+        @media (max-height: 500px) {
+            :root {
+                --slide-padding: clamp(0.5rem, 2vw, 1rem);
+                --title-size: clamp(1.25rem, 4vw, 2rem);
+                --h2-size: clamp(1.1rem, 3vw, 1.5rem);
+                --body-size: clamp(0.65rem, 1vw, 0.85rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid, .diff-grid, .delivery-grid, .prospect-grid { grid-template-columns: 1fr; max-width: min(90vw, 400px); }
+            .verticals-grid { grid-template-columns: 1fr; max-width: min(90vw, 400px); }
+            .nav-dots { display: none; }
+            .logo-bar { gap: clamp(1.25rem, 3vw, 2rem); }
+        }
+
+        @media (max-width: 600px) {
+            :root { --title-size: clamp(1.5rem, 8vw, 3rem); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+
+    <!-- SLIDE 1: TITLE -->
+    <section class="slide" aria-label="Title">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <div class="reveal wordmark" style="display:flex;align-items:center;gap:clamp(0.6rem,1.2vw,1rem);">FALCON<span>GTM</span> <span style="font-weight: 400; opacity: 0.4;">&times;</span> <img src="https://solistherapy.com/cdn/shop/files/Solis_Logo_sxs_white.png?v=1762358379&width=1919" alt="Solis Therapy" style="height:clamp(28px,4vw,44px);"></div>
+            <h1 class="reveal headline" style="margin-top: clamp(0.5rem, 1vh, 1rem);">Your B2B channel,</h1>
+            <p class="reveal headline-italic">built from scratch.</p>
+            <p class="reveal subhead" style="margin-top: clamp(0.5rem, 1vh, 1rem);">You've built a strong DTC brand. Now it's time to get your panels into clinics, gyms, and treatment rooms across the UK, UAE, and USA.</p>
+        </div>
+        <div class="slide-number">01 / 11</div>
+    </section>
+
+    <!-- SLIDE 2: THE OPPORTUNITY -->
+    <section class="slide" aria-label="The opportunity">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">The opportunity</p>
+            <h2 class="reveal h2">You've built a product people love.<br>Clinics would love it too.</h2>
+            <p class="reveal subhead" style="margin-top: clamp(0.25rem, 0.5vh, 0.5rem);">Most DTC brands leave B2B revenue on the table because they don't have the system to go after it. No lead lists, no outbound engine, no way to get in front of clinic owners and gym directors at scale. That's the gap we fill — building a qualified revenue pipeline for your sales team to act on.</p>
+        </div>
+        <div class="slide-number">02 / 11</div>
+    </section>
+
+    <!-- SLIDE 3: WHO WE'D TARGET -->
+    <section class="slide" aria-label="Target verticals">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">Who we'd target</p>
+            <h2 class="reveal h2">Four verticals, three territories.</h2>
+            <div class="reveal verticals-grid" style="margin-top: clamp(0.5rem, 1vh, 1rem);">
+                <div class="vertical-card">
+                    <div class="vertical-icon">&#9678;</div>
+                    <p class="vertical-name">Aesthetic clinics and medspas</p>
+                    <p class="vertical-desc">Already selling light-based treatments. RLT fits straight into their menu at a fraction of the cost of clinical LED beds.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">&#9670;</div>
+                    <p class="vertical-name">Sports physio clinics</p>
+                    <p class="vertical-desc">Muscle recovery and injury treatment. RLT is backed by thousands of studies and their patients already ask about it.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">&#9632;</div>
+                    <p class="vertical-name">Gyms and recovery centres</p>
+                    <p class="vertical-desc">Recovery is the fastest-growing segment in fitness. RLT panels give them a differentiation play other gyms don't have.</p>
+                </div>
+                <div class="vertical-card">
+                    <div class="vertical-icon">&#9733;</div>
+                    <p class="vertical-name">Regenerative medicine</p>
+                    <p class="vertical-desc">Evidence-based clinics expanding their modality range. 8,000+ clinical studies give them the confidence to add it.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">03 / 11</div>
+    </section>
+
+    <!-- SLIDE 4: SIGNAL INTELLIGENCE — 3 PROSPECT CARDS -->
+    <section class="slide" aria-label="Signal intelligence">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">Signal intelligence</p>
+            <h2 class="reveal h2">See who's buying before they raise their hand.</h2>
+            <div class="reveal prospect-grid" style="margin-top: clamp(0.5rem, 1vh, 1rem);">
+                <div class="prospect-card">
+                    <p class="prospect-name">Fiona Ross</p>
+                    <p class="prospect-meta">Founder &amp; Nurse Prescriber<br>The Aesthetics Club</p>
+                    <p class="prospect-signal"><strong>Personally uses the LYMA Laser at home</strong> and publicly recommended it in Quine Magazine — but offers no in-clinic RLT across any of her 5 locations. Zero-competition opportunity with a founder already sold on light therapy science.</p>
+                </div>
+                <div class="prospect-card">
+                    <p class="prospect-name">Karl Khan</p>
+                    <p class="prospect-meta">Founder &amp; Lead Physiotherapist<br>Rebuild Sports Clinic</p>
+                    <p class="prospect-signal"><strong>Actively reposts novel therapeutic devices on LinkedIn</strong> — including a 'ground-breaking' knee device and MBST therapy at Charlton Athletic. Offers shockwave therapy but no RLT. Science-first buyer looking for evidence-backed recovery modalities.</p>
+                </div>
+                <div class="prospect-card">
+                    <p class="prospect-name">Barbara Weber</p>
+                    <p class="prospect-meta">Managing Director &amp; Founder<br>Bodyvie</p>
+                    <p class="prospect-signal"><strong>Already sells red light therapy in 3 formats</strong> — Dermaulux LED, Reveallux photodynamic body LED (£150/session), and Ultraslim RLT (£25 add-on). This is an upgrade pitch, not a concept sell. The Solis SUPREME pays for itself in 6 sessions.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">04 / 11</div>
+    </section>
+
+    <!-- SLIDE 5: TRACK RECORD -->
+    <section class="slide" aria-label="Track record">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">Track record</p>
+            <h2 class="reveal h2">The team behind this has closed deals<br>with adidas, EY, and KPMG.</h2>
+            <p class="reveal subhead" style="margin-top: clamp(0.25rem, 0.5vh, 0.5rem);">The same system has generated pipeline with senior VPs and directors at Microsoft, Salesforce, and Google.</p>
+            <p class="reveal subhead" style="margin-top: clamp(0.75rem, 1.5vh, 1.25rem); font-weight: 600; color: var(--white); font-size: var(--small-size); letter-spacing: 0.03em;">&pound;9 million in potential contracts &middot; 500+ partnerships &middot; Thousands of qualified leads</p>
+        </div>
+        <div class="slide-number">05 / 11</div>
+    </section>
+
+    <!-- SLIDE 6: HOW IT WORKS -->
+    <section class="slide" aria-label="How it works">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">How it works</p>
+            <h2 class="reveal h2">We run the entire system. Your team closes the deals.</h2>
+            <div class="reveal steps-grid" style="margin-top: clamp(0.5rem, 1vh, 1rem);">
+                <div class="step-card">
+                    <span class="step-number">01</span>
+                    <h3 class="step-title">Identify</h3>
+                    <p class="step-body">We build ICP-matched lists of clinic owners, gym directors, and medical practitioners across the UK, UAE, and USA. Every lead is researched and scored before outreach begins.</p>
+                    <span class="step-stat">TAM: ~14,000+ businesses across UK &amp; USA</span>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">02</span>
+                    <h3 class="step-title">Engage</h3>
+                    <p class="step-body">Personalised multi-channel outreach via email and LinkedIn. We write the copy, handle deliverability, and run every sequence.</p>
+                    <span class="step-stat">~4,000 touchpoints &middot; 1,000 contacts/mo &middot; 400&ndash;800 LinkedIn messages</span>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">03</span>
+                    <h3 class="step-title">Deliver</h3>
+                    <p class="step-body">Qualified leads land in your inbox. Each one comes with a full intelligence briefing: who they are, what they need, and why Solis is the right fit for their business.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">06 / 11</div>
+    </section>
+
+    <!-- SLIDE 7: WHAT MAKES THIS DIFFERENT (ivory) -->
+    <section class="slide slide-ivory" aria-label="What makes this different">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">What makes this different</p>
+            <h2 class="reveal h2">Outbound agencies measure success in volume.<br>We measure it in revenue pipeline.</h2>
+            <div class="reveal diff-grid" style="margin-top: clamp(0.5rem, 1vh, 1rem);">
+                <div class="diff-card">
+                    <p class="diff-label">Signal-first targeting</p>
+                    <p class="diff-body">We track hiring patterns, social activity, and expansion signals to find clinics and gyms that are actively adding new services — before they're shopping.</p>
+                </div>
+                <div class="diff-card">
+                    <p class="diff-label">Deep intelligence, not just leads</p>
+                    <p class="diff-body">Every qualified lead arrives with a full report: what they offer, what signals triggered outreach, why they fit Solis, and the specific angle for your team to use.</p>
+                </div>
+                <div class="diff-card">
+                    <p class="diff-label">Fully managed pipeline</p>
+                    <p class="diff-body">Targeting, copy, deliverability, sequencing. We run it end to end and hand your sales team warm, ready-to-close opportunities.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">07 / 11</div>
+    </section>
+
+    <!-- SLIDE 8: WHY SOLIS WINS -->
+    <section class="slide" aria-label="Why Solis wins">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">Why Solis wins in B2B</p>
+            <h2 class="reveal h2-italic" style="max-width: min(85vw, 700px);">Clinical-grade tech at a price point clinics can actually say yes to.</h2>
+            <p class="reveal subhead" style="margin-top: clamp(0.25rem, 0.5vh, 0.5rem);">Professional LED beds cost tens of thousands. A Solis STUDIO panel is under two grand. Add in the 4.8 Trustpilot rating, 3-year warranty, and 90-day money-back guarantee, and the objection handling almost does itself.</p>
+        </div>
+        <div class="slide-number">08 / 11</div>
+    </section>
+
+    <!-- SLIDE 9: WHAT YOU GET (before pricing) -->
+    <section class="slide" aria-label="What you get">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">What you get</p>
+            <h2 class="reveal h2">Live visibility into every lead in your pipeline.</h2>
+            <div class="reveal delivery-grid" style="margin-top: clamp(0.5rem, 1vh, 1rem);">
+                <div class="delivery-card">
+                    <div class="delivery-icon">&#9656;</div>
+                    <p class="delivery-title">Live Notifications</p>
+                    <p class="delivery-body">Instant alerts the moment a qualified lead enters your pipeline. Your sales team sees who it is, their company, and why they've been flagged — before they even open the full report.</p>
+                </div>
+                <div class="delivery-card">
+                    <div class="delivery-icon">&#9632;</div>
+                    <p class="delivery-title">Custom dashboard</p>
+                    <p class="delivery-body">A dedicated, real-time dashboard built for your team. See every lead in the campaign, where they are in the sequence, who's engaged, and what action to take next.</p>
+                </div>
+                <div class="delivery-card">
+                    <div class="delivery-icon">&#9733;</div>
+                    <p class="delivery-title">Full lead intelligence</p>
+                    <p class="delivery-body">Each opportunity arrives with a detailed report: signals that triggered it, company and contact deep-dive, and a clear reason why this lead is right for Solis — so your team can act with confidence.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">09 / 11</div>
+    </section>
+
+    <!-- SLIDE 10: INVESTMENT -->
+    <section class="slide" aria-label="Investment">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <p class="reveal section-label">Investment</p>
+            <h2 class="reveal h2">What this costs</h2>
+            <div class="reveal pricing-card" style="margin-top: clamp(0.5rem, 1vh, 1rem);">
+                <p class="pricing-original">&pound;2,000/mo</p>
+                <p class="pricing-amount">&pound;1,000</p>
+                <p class="pricing-period">per month</p>
+                <p class="pricing-badge">1-month rolling contract</p>
+                <p style="font-size:var(--small-size);color:var(--grey);margin-top:clamp(0.1rem,0.3vh,0.25rem);"><span style="text-decoration:line-through;opacity:0.5;">&pound;1,600 setup fee</span> <span style="color:var(--pink);font-weight:600;">Waived</span></p>
+                <div class="pricing-includes">
+                    <p class="pricing-item">1,000 ICP-matched leads sourced and qualified per month</p>
+                    <p class="pricing-item">4,000 personalised touchpoints per month</p>
+                    <p class="pricing-item">400–800 coordinated LinkedIn messages per month</p>
+                    <p class="pricing-item">Multi-channel outreach (email + LinkedIn), fully managed</p>
+                    <p class="pricing-item">All copy, deliverability, and sequencing handled</p>
+                    <p class="pricing-item">Qualified leads delivered into your pipeline with full intelligence reports</p>
+                    <p class="pricing-item">Live notifications and custom dashboard with real-time insights</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10 / 11</div>
+    </section>
+
+    <!-- SLIDE 11: CLOSE -->
+    <section class="slide" aria-label="Next steps">
+        <div class="slide-content" style="gap: var(--content-gap);">
+            <h2 class="reveal headline">Let's open your<br>B2B channel.</h2>
+            <p class="reveal subhead" style="margin-top: clamp(0.5rem, 1vh, 1rem);">You've already built a product clinics want. Let us build the pipeline to put it in front of them.</p>
+        </div>
+        <div class="slide-number">11 / 11</div>
+    </section>
+
+    <script>
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.totalSlides = this.slides.length;
+                this.currentSlide = 0;
+                this.createNavDots();
+                this.setupObserver();
+                this.setupKeyboard();
+            }
+
+            createNavDots() {
+                const nav = document.getElementById('navDots');
+                this.slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('nav-dot');
+                    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        this.slides[i].scrollIntoView({ behavior: 'smooth' });
+                    });
+                    nav.appendChild(dot);
+                });
+                this.dots = nav.querySelectorAll('.nav-dot');
+            }
+
+            setupObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            const index = Array.from(this.slides).indexOf(entry.target);
+                            this.currentSlide = index;
+                            this.updateProgress();
+                            this.updateDots();
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+
+            updateProgress() {
+                const pct = ((this.currentSlide + 1) / this.totalSlides) * 100;
+                document.getElementById('progressBar').style.width = pct + '%';
+            }
+
+            updateDots() {
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentSlide);
+                });
+            }
+
+            setupKeyboard() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        const next = Math.min(this.currentSlide + 1, this.totalSlides - 1);
+                        this.slides[next].scrollIntoView({ behavior: 'smooth' });
+                    }
+                    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        const prev = Math.max(this.currentSlide - 1, 0);
+                        this.slides[prev].scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new SlidePresentation();
+        });
+    </script>
+</body>
+</html>
