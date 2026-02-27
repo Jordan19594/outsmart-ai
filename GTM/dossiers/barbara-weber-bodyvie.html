@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbara Weber — Bodyvie | Solis Therapy Dossier</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #f7f5f2; color: #1a1a1a; }
+  .page { max-width: 900px; margin: 0 auto; background: #fff; }
+  .header { background: #0f1923; padding: 40px 48px 36px; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -40px; top: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.03); }
+  .solis-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e; border: 1px solid #c9a96e; padding: 4px 10px; margin-bottom: 28px; }
+  .lead-name { font-size: 36px; font-weight: 400; color: #fff; letter-spacing: -0.5px; line-height: 1.1; }
+  .lead-company { font-family: 'Arial', sans-serif; font-size: 14px; color: #8a9aa8; letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+  .lead-meta { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+  .meta-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #6b7e8c; }
+  .meta-item span { color: #c9a96e; font-weight: 600; }
+  .score-bar { background: #0f1923; padding: 0 48px 32px; display: flex; align-items: center; gap: 32px; border-bottom: 3px solid #c9a96e; }
+  .score-circle { width: 72px; height: 72px; border-radius: 50%; background: #c9a96e; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+  .score-circle .num { font-family: 'Arial', sans-serif; font-size: 26px; font-weight: 700; color: #0f1923; line-height: 1; }
+  .score-circle .label { font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700; color: #0f1923; text-transform: uppercase; letter-spacing: 0.5px; }
+  .score-details { flex: 1; }
+  .tier-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #0f1923; background: #c9a96e; padding: 3px 10px; margin-bottom: 8px; }
+  .recommended { font-family: 'Arial', sans-serif; font-size: 13px; color: #8a9aa8; }
+  .recommended strong { color: #fff; }
+  .body { padding: 40px 48px; }
+  .section { margin-bottom: 36px; }
+  .section-title { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #c9a96e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #f0ebe4; }
+  .clinic-summary { font-size: 15px; line-height: 1.7; color: #2c2c2c; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-family: 'Arial', sans-serif; font-size: 11px; color: #3a3a3a; background: #f7f5f2; border: 1px solid #e0dbd4; padding: 4px 10px; }
+  .tag.warm { background: #edfbf0; border-color: #4caf50; color: #2a6e2e; font-weight: 600; }
+  .tag.highlight { background: #fdf6ec; border-color: #c9a96e; color: #8a6a2a; }
+  .hook-card { background: #fdf6ec; border-left: 3px solid #c9a96e; padding: 14px 16px; margin-bottom: 12px; }
+  .hook-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .hook-num { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #c9a96e; margin-bottom: 6px; }
+  .obj-card { background: #f9f8f7; border-left: 3px solid #d4d0cb; padding: 14px 16px; margin-bottom: 12px; }
+  .obj-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .obj-label { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #f0ebe4; margin-bottom: 36px; }
+  .stat { background: #fff; padding: 20px 16px; text-align: center; }
+  .stat-val { font-size: 22px; font-weight: 400; color: #0f1923; margin-bottom: 4px; }
+  .stat-key { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #888; }
+  .callout { background: #0f1923; color: #c9a96e; padding: 16px 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.6; font-family: 'Arial', sans-serif; }
+  .callout strong { color: #fff; }
+  .contact-strip { background: #0f1923; padding: 20px 48px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .contact-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #8a9aa8; }
+  .contact-item a { color: #c9a96e; text-decoration: none; }
+  .footer { padding: 16px 48px; background: #f7f5f2; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-right { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; }
+  @media print { body { background: #fff; } .page { max-width: 100%; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="solis-badge">Solis Therapy · B2B Prospect Dossier</div>
+    <div class="lead-name">Barbara Weber</div>
+    <div class="lead-company">Bodyvie · Richmond, SW London</div>
+    <div class="lead-meta">
+      <div class="meta-item">Title: <span>Managing Director &amp; Founder</span></div>
+      <div class="meta-item">Industry: <span>Aesthetics &amp; Beauty</span></div>
+      <div class="meta-item">Founded: <span>1999 — one of London's original cosmetic clinics</span></div>
+    </div>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-circle">
+      <div class="num">88</div>
+      <div class="label">ICP Score</div>
+    </div>
+    <div class="score-details">
+      <div class="tier-badge">A — Hot</div>
+      <div class="recommended">Recommended: <strong>Spectrum SUPREME 2.0 — £899</strong> (half-body panel)</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="callout">
+      <strong>Critical intelligence:</strong> Bodyvie already uses red light therapy in 3 separate offerings — Dermaulux LED facial, Reveallux photodynamic body LED (£150/session), and Ultraslim Red Light Therapy add-on (£25). Barbara already believes in the modality. This is an <strong>upgrade pitch, not a concept sell.</strong>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">1999</div><div class="stat-key">Est. Year</div></div>
+      <div class="stat"><div class="stat-val">8–10</div><div class="stat-key">Staff</div></div>
+      <div class="stat"><div class="stat-val">£150</div><div class="stat-key">RLT Session Price</div></div>
+      <div class="stat"><div class="stat-val">3</div><div class="stat-key">RLT Offerings</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Clinic Overview</div>
+      <div class="clinic-summary">Bodyvie (133–135 Kew Road, Richmond TW9) is one of London's original doctor-led medical aesthetic clinics, established in 1999 by Barbara Weber following ~20 years in NHS Practice and Fundholding Management. CQC-registered. Self-described as "Harley Street quality in the heart of Richmond." Co-led medically by Dr Andrew Weber (Medical Director). The clinic spans non-surgical aesthetics, cosmetic surgery, private GP, dermatology, women's health, and body treatments. Barbara is the operational founder — not a clinician — and has built one of Surrey/SW London's most enduring premium aesthetics practices.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Existing Light Therapy Offering (Key Intel)</div>
+      <div class="tags">
+        <div class="tag warm">Dermaulux LED Facial — from £50/session (12-session pack £500)</div>
+        <div class="tag warm">Reveallux Photodynamic LED Body (red/NIR/green/blue) — from £150/session</div>
+        <div class="tag warm">Ultraslim Red Light Therapy add-on — £25 (bolt-on to LipoFirm Pro)</div>
+        <div class="tag highlight">Gap: No standalone full/half-body clinical panel for systemic RLT protocols</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="section">
+        <div class="section-title">Other Key Modalities</div>
+        <div class="tags">
+          <div class="tag">Alexandrite &amp; Nd:YAG laser (hair removal)</div>
+          <div class="tag">Erbium/Youlase laser (skin resurfacing)</div>
+          <div class="tag">Endolift laser (fat &amp; tightening)</div>
+          <div class="tag">RF Microneedling (Intracel)</div>
+          <div class="tag">HIFU / Hollywood Facial</div>
+          <div class="tag">LipoFirm Pro body sculpting</div>
+          <div class="tag">IPL photofacial</div>
+          <div class="tag">Plasma Pen / Plexr</div>
+          <div class="tag">PRP therapy</div>
+          <div class="tag">HydraFacial</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Clinic Profile</div>
+        <div class="tags">
+          <div class="tag">Single premium Richmond location</div>
+          <div class="tag">~8–10 medical/clinical staff</div>
+          <div class="tag">CQC registered</div>
+          <div class="tag">Premium pricing (Endolift from £1,500)</div>
+          <div class="tag">Men's aesthetics growth area</div>
+          <div class="tag">Menopause/HRT specialism</div>
+          <div class="tag">Instagram: @bodyvie_mediclinic (3,427 followers)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Personalisation Hooks</div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 1 — Upgrade, Not Convince</div>
+        <p>Barbara already sells RLT in three formats — she has bought into the modality commercially. The Solis SUPREME 2.0 pitch is not "here's a new concept" but "here's the professional evolution of what you already offer." The £25 Ultraslim add-on and £50 Dermaulux session become a £150–200/session standalone half-body protocol. Same belief, five times the revenue per treatment.</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 2 — ROI Is Self-Evident</div>
+        <p>At Bodyvie's current Reveallux pricing of £150/session, a Solis SUPREME 2.0 at £899 pays for itself in 6 sessions. That's under 2 weeks at 3 sessions per week. Zero consumables, no staff certification required, and the clinical irradiance exceeds their existing LED devices. Position this as the highest ROI capital investment in their equipment portfolio this year.</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 3 — Pioneer Identity Alignment</div>
+        <p>Bodyvie markets itself as "utilising only the latest technologies" and describes Barbara as a pioneer. The Solis SUPREME 2.0 is award-winning (lead with the award name), and full-body RLT panels are what premium Harley Street clinics began adding in 2024–2025. Frame it as: "Richmond should have what W1 has" — this fits Barbara's stated positioning of delivering Harley Street quality locally.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Likely Objections &amp; Counters</div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 1 — "We already have LED covered"</div>
+        <p>Dermaulux and Reveallux are small localised devices. The SUPREME 2.0 delivers half-body coverage at clinical irradiance in a single 10–20 min session — a different clinical proposition (systemic photobiomodulation, full-body anti-inflammatory, collagen at scale). Different use case, different patient journey, and a higher per-session fee warranted.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 2 — Capital spend</div>
+        <p>At £899, this is the lowest-cost device Bodyvie has ever purchased relative to what it generates. Compare: Dermalux Flex MD retails at £3,500+. Endolift laser equipment: £30,000+. The ROI case is unusually clear — present it as a spreadsheet, not a pitch.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 3 — Room allocation</div>
+        <p>Single-clinic Richmond site with a busy treatment schedule. The SUPREME 2.0 can operate as a session add-on (post-Endolift recovery, post-Endermologie, or standalone express session) rather than requiring a dedicated room block. It pairs naturally with their existing body treatment menu.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-strip">
+    <div class="contact-item">Email: <a href="mailto:barbara@bodyvie.co.uk">barbara@bodyvie.co.uk</a></div>
+    <div class="contact-item">Website: <a href="https://bodyvie.com" target="_blank">bodyvie.com</a></div>
+    <div class="contact-item">Instagram: <a href="https://instagram.com/bodyvie_mediclinic" target="_blank">@bodyvie_mediclinic</a></div>
+    <div class="contact-item">LinkedIn: <a href="https://www.linkedin.com/in/barbara-weber-37013a4b/" target="_blank">barbara-weber-37013a4b</a></div>
+    <div class="contact-item">Status: <span style="color:#c9a96e;font-weight:700;">Meeting Set</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">Solis Therapy · Confidential Prospect Dossier · Feb 2026</div>
+    <div class="footer-right">Prepared by Falcon GTM</div>
+  </div>
+
+</div>
+</body>
+</html>

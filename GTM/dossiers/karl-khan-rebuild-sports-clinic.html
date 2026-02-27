@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karl Khan — Rebuild Sports Clinic | Solis Therapy Dossier</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #f7f5f2; color: #1a1a1a; }
+
+  .page { max-width: 900px; margin: 0 auto; background: #fff; }
+
+  /* Header */
+  .header { background: #0f1923; padding: 40px 48px 36px; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -40px; top: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.03); }
+  .solis-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e; border: 1px solid #c9a96e; padding: 4px 10px; margin-bottom: 28px; }
+  .lead-name { font-size: 36px; font-weight: 400; color: #fff; letter-spacing: -0.5px; line-height: 1.1; }
+  .lead-company { font-family: 'Arial', sans-serif; font-size: 14px; color: #8a9aa8; letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+  .lead-meta { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+  .meta-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #6b7e8c; }
+  .meta-item span { color: #c9a96e; font-weight: 600; }
+
+  /* Score bar */
+  .score-bar { background: #0f1923; padding: 0 48px 32px; display: flex; align-items: center; gap: 32px; border-bottom: 3px solid #c9a96e; }
+  .score-circle { width: 72px; height: 72px; border-radius: 50%; background: #c9a96e; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+  .score-circle .num { font-family: 'Arial', sans-serif; font-size: 26px; font-weight: 700; color: #0f1923; line-height: 1; }
+  .score-circle .label { font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700; color: #0f1923; text-transform: uppercase; letter-spacing: 0.5px; }
+  .score-details { flex: 1; }
+  .tier-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #0f1923; background: #c9a96e; padding: 3px 10px; margin-bottom: 8px; }
+  .recommended { font-family: 'Arial', sans-serif; font-size: 13px; color: #8a9aa8; }
+  .recommended strong { color: #fff; }
+
+  /* Body */
+  .body { padding: 40px 48px; }
+
+  /* Section */
+  .section { margin-bottom: 36px; }
+  .section-title { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #c9a96e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #f0ebe4; }
+
+  /* Clinic summary */
+  .clinic-summary { font-size: 15px; line-height: 1.7; color: #2c2c2c; }
+
+  /* Two col */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* Tags */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-family: 'Arial', sans-serif; font-size: 11px; color: #3a3a3a; background: #f7f5f2; border: 1px solid #e0dbd4; padding: 4px 10px; }
+  .tag.highlight { background: #fdf6ec; border-color: #c9a96e; color: #8a6a2a; }
+
+  /* Hook cards */
+  .hook-card { background: #fdf6ec; border-left: 3px solid #c9a96e; padding: 14px 16px; margin-bottom: 12px; }
+  .hook-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .hook-num { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #c9a96e; margin-bottom: 6px; }
+
+  /* Objection cards */
+  .obj-card { background: #f9f8f7; border-left: 3px solid #d4d0cb; padding: 14px 16px; margin-bottom: 12px; }
+  .obj-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .obj-label { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+
+  /* Stats row */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #f0ebe4; margin-bottom: 36px; }
+  .stat { background: #fff; padding: 20px 16px; text-align: center; }
+  .stat-val { font-size: 22px; font-weight: 400; color: #0f1923; margin-bottom: 4px; }
+  .stat-key { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #888; }
+
+  /* Contact strip */
+  .contact-strip { background: #0f1923; padding: 20px 48px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .contact-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #8a9aa8; }
+  .contact-item a { color: #c9a96e; text-decoration: none; }
+  .contact-item a:hover { text-decoration: underline; }
+
+  /* Footer */
+  .footer { padding: 16px 48px; background: #f7f5f2; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-right { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; }
+
+  /* Gap tag */
+  .gap-tag { display: inline-block; font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #fff; background: #c0392b; padding: 2px 8px; margin-left: 8px; vertical-align: middle; }
+
+  @media print {
+    body { background: #fff; }
+    .page { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="solis-badge">Solis Therapy · B2B Prospect Dossier</div>
+    <div class="lead-name">Karl Khan</div>
+    <div class="lead-company">Rebuild Sports Clinic · City of London</div>
+    <div class="lead-meta">
+      <div class="meta-item">Title: <span>Founder & Clinical Lead Physiotherapist</span></div>
+      <div class="meta-item">Industry: <span>Physiotherapy & Sports Medicine</span></div>
+      <div class="meta-item">Location: <span>EC3A, City of London</span></div>
+    </div>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-circle">
+      <div class="num">92</div>
+      <div class="label">ICP Score</div>
+    </div>
+    <div class="score-details">
+      <div class="tier-badge">A — Hot</div>
+      <div class="recommended">Recommended: <strong>Spectrum STUDIO 1.0 — £1,979</strong> (full body panel)</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">1</div><div class="stat-key">Location</div></div>
+      <div class="stat"><div class="stat-val">3–8</div><div class="stat-key">Practitioners</div></div>
+      <div class="stat"><div class="stat-val">4.6★</div><div class="stat-key">Trustpilot</div></div>
+      <div class="stat"><div class="stat-val">0</div><div class="stat-key">RLT Presence</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Clinic Overview</div>
+      <div class="clinic-summary">Rebuild Sports Clinic is a private specialist musculoskeletal and sports injury clinic based in the heart of the City of London (33 Creechurch Lane, EC3A). Founded by Karl Khan — HCPC-registered physiotherapist and BSc graduate of the University of East London — the clinic positions around non-invasive, evidence-based treatment for both elite athletes and City professionals. Trading as Dolor Medical Supplies Ltd (Co. No. 10704204). Previous official physio for Charlton Athletic FC and multiple London hockey teams.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Current Technology Stack</div>
+      <div class="tags">
+        <div class="tag">STORZ DOLOR Spinal Shockwave</div>
+        <div class="tag">Acupuncture / Dry Needling</div>
+        <div class="tag">Electrotherapy</div>
+        <div class="tag">Manual therapy</div>
+        <div class="tag">Clinical Pilates</div>
+        <div class="tag">Sports Massage</div>
+        <div class="tag highlight">Red Light Therapy — NOT OFFERED <span class="gap-tag">Gap</span></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="section">
+        <div class="section-title">Client Base</div>
+        <div class="tags">
+          <div class="tag">City & Canary Wharf professionals</div>
+          <div class="tag">Recreational athletes</div>
+          <div class="tag">Runners (parkrun → ultra)</div>
+          <div class="tag">Hockey players</div>
+          <div class="tag">Bodybuilders / gym clients</div>
+          <div class="tag">GP / ortho referrals</div>
+          <div class="tag">Health insurer patients (BUPA, AXA)</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Clinic Profile</div>
+        <div class="tags">
+          <div class="tag">Boutique / sole-practitioner model</div>
+          <div class="tag">Premium City London pricing</div>
+          <div class="tag">Mon–Fri only (08:00–18:00)</div>
+          <div class="tag">Device-curious — engages with novel modalities on LinkedIn</div>
+          <div class="tag">Low digital footprint / no PR</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Personalisation Hooks</div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 1 — Device-Curious Innovator</div>
+        <p>Karl actively reposts content about novel therapeutic devices on LinkedIn — including a 'ground-breaking' knee pain device and MBST therapy at Charlton Athletic. He is already looking for evidence-backed modalities. Lead with the photobiomodulation research (NASA origins, tendon healing, muscle recovery data) before mentioning the product. This is a science-first conversation, not a sales pitch.</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 2 — Sports Team Physio Identity</div>
+        <p>Karl worked as official physio for Charlton Athletic FC and multiple London/Essex hockey clubs. His professional identity is rooted in elite sports performance and return-to-sport protocols. Position the STUDIO 1.0 as a training-load management and recovery tool for athlete clients — not a passive wellness device. "What your athletes do between sessions determines how fast they return."</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 3 — Second Innovation Modality</div>
+        <p>The STORZ DOLOR shockwave system is Karl's flagship differentiator in a competitive City clinic market. The STUDIO 1.0 adds a second evidence-based, non-invasive modality at £1,979 — a single capital purchase that fills a genuine technology gap and creates a new revenue stream. Frame it as "alongside shockwave, not competing with it" — a complementary protocol that shortens recovery time and enhances shockwave outcomes.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Likely Objections &amp; Counters</div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 1 — Evidence scepticism</div>
+        <p>Karl is HCPC-registered and clinically trained — he reads the research. He will ask for peer-reviewed evidence on RLT for MSK conditions. Come prepared with PubMed citations on photobiomodulation for tendinopathy, muscle recovery, and post-exercise inflammation. Don't lead with lifestyle claims.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 2 — Commercial model question</div>
+        <p>As a boutique clinic, Karl will want to know how he charges for RLT. Give him a concrete model: 10-min RLT pre/post-session at £25–35, amortising the £1,979 device cost in under 3 months at moderate volume. At 3 uses/day × 5 days = £2,100+/month potential.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 3 — Space / logistics</div>
+        <p>City of London premium rent means treatment room space is at a premium. The STUDIO 1.0 is a floor-standing full-body panel. Worth asking about layout before pitching — or pivot to the SUPREME 2.0 (half-body) as a more footprint-friendly entry point at £899.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-strip">
+    <div class="contact-item">Email: <a href="mailto:karl@rebuildsportsclinic.com">karl@rebuildsportsclinic.com</a></div>
+    <div class="contact-item">Website: <a href="https://rebuildsportsclinic.com" target="_blank">rebuildsportsclinic.com</a></div>
+    <div class="contact-item">LinkedIn: <a href="https://www.linkedin.com/in/karl-khan-260335a2/" target="_blank">karl-khan-260335a2</a></div>
+    <div class="contact-item">Status: <span style="color:#c9a96e;font-weight:700;">Meeting Set</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">Solis Therapy · Confidential Prospect Dossier · Feb 2026</div>
+    <div class="footer-right">Prepared by Falcon GTM</div>
+  </div>
+
+</div>
+</body>
+</html>

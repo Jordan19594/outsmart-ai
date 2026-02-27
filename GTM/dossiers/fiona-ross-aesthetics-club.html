@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiona Ross — The Aesthetics Club | Solis Therapy Dossier</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #f7f5f2; color: #1a1a1a; }
+  .page { max-width: 900px; margin: 0 auto; background: #fff; }
+  .header { background: #0f1923; padding: 40px 48px 36px; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -40px; top: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.03); }
+  .solis-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e; border: 1px solid #c9a96e; padding: 4px 10px; margin-bottom: 28px; }
+  .lead-name { font-size: 36px; font-weight: 400; color: #fff; letter-spacing: -0.5px; line-height: 1.1; }
+  .lead-company { font-family: 'Arial', sans-serif; font-size: 14px; color: #8a9aa8; letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+  .lead-meta { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+  .meta-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #6b7e8c; }
+  .meta-item span { color: #c9a96e; font-weight: 600; }
+  .score-bar { background: #0f1923; padding: 0 48px 32px; display: flex; align-items: center; gap: 32px; border-bottom: 3px solid #c9a96e; }
+  .score-circle { width: 72px; height: 72px; border-radius: 50%; background: #c9a96e; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+  .score-circle .num { font-family: 'Arial', sans-serif; font-size: 26px; font-weight: 700; color: #0f1923; line-height: 1; }
+  .score-circle .label { font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700; color: #0f1923; text-transform: uppercase; letter-spacing: 0.5px; }
+  .score-details { flex: 1; }
+  .tier-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #0f1923; background: #c9a96e; padding: 3px 10px; margin-bottom: 8px; }
+  .recommended { font-family: 'Arial', sans-serif; font-size: 13px; color: #8a9aa8; }
+  .recommended strong { color: #fff; }
+  .body { padding: 40px 48px; }
+  .section { margin-bottom: 36px; }
+  .section-title { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #c9a96e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #f0ebe4; }
+  .clinic-summary { font-size: 15px; line-height: 1.7; color: #2c2c2c; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-family: 'Arial', sans-serif; font-size: 11px; color: #3a3a3a; background: #f7f5f2; border: 1px solid #e0dbd4; padding: 4px 10px; }
+  .tag.hot { background: #fff0f0; border-color: #e57373; color: #c0392b; font-weight: 600; }
+  .tag.highlight { background: #fdf6ec; border-color: #c9a96e; color: #8a6a2a; }
+  .hook-card { background: #fdf6ec; border-left: 3px solid #c9a96e; padding: 14px 16px; margin-bottom: 12px; }
+  .hook-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .hook-num { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #c9a96e; margin-bottom: 6px; }
+  .obj-card { background: #f9f8f7; border-left: 3px solid #d4d0cb; padding: 14px 16px; margin-bottom: 12px; }
+  .obj-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .obj-label { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #f0ebe4; margin-bottom: 36px; }
+  .stat { background: #fff; padding: 20px 16px; text-align: center; }
+  .stat-val { font-size: 22px; font-weight: 400; color: #0f1923; margin-bottom: 4px; }
+  .stat-key { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #888; }
+  .press-row { display: flex; flex-direction: column; gap: 8px; }
+  .press-item { font-family: 'Arial', sans-serif; font-size: 13px; color: #2c2c2c; padding: 8px 12px; background: #f7f5f2; border-left: 2px solid #c9a96e; }
+  .press-item em { color: #888; font-style: normal; font-size: 11px; }
+  .callout { background: #0f1923; color: #c9a96e; padding: 16px 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.6; font-family: 'Arial', sans-serif; }
+  .callout strong { color: #fff; }
+  .contact-strip { background: #0f1923; padding: 20px 48px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .contact-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #8a9aa8; }
+  .contact-item a { color: #c9a96e; text-decoration: none; }
+  .footer { padding: 16px 48px; background: #f7f5f2; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-right { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; }
+  @media print { body { background: #fff; } .page { max-width: 100%; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="solis-badge">Solis Therapy · B2B Prospect Dossier</div>
+    <div class="lead-name">Fiona Ross</div>
+    <div class="lead-company">The Aesthetics Club · Glasgow / London / Edinburgh / Gleneagles</div>
+    <div class="lead-meta">
+      <div class="meta-item">Title: <span>Founder &amp; Nurse Prescriber (Masters)</span></div>
+      <div class="meta-item">Industry: <span>Aesthetics &amp; Beauty</span></div>
+      <div class="meta-item">Scale: <span>5 locations, £3M+ target revenue, 7,000+ clients</span></div>
+    </div>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-circle">
+      <div class="num">87</div>
+      <div class="label">ICP Score</div>
+    </div>
+    <div class="score-details">
+      <div class="tier-badge">A — Hot</div>
+      <div class="recommended">Recommended: <strong>Spectrum SUPREME 2.0 — £899</strong> (per location — potential for 5× orders)</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="callout">
+      <strong>Key signal:</strong> Fiona personally uses the LYMA Laser (home-use low-level laser device) and recommended it in <em>Quine Magazine</em> (Aug 2024). She already believes in light-based skin technology. No in-clinic RLT offering exists across any of her 5 locations. <strong>This is a zero-competition opportunity with a founder who is already sold on the science.</strong>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">5</div><div class="stat-key">Clinic Locations</div></div>
+      <div class="stat"><div class="stat-val">£250k</div><div class="stat-key">2024 Growth Funding</div></div>
+      <div class="stat"><div class="stat-val">7,000+</div><div class="stat-key">Registered Clients</div></div>
+      <div class="stat"><div class="stat-val">0</div><div class="stat-key">RLT Presence</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Company Overview</div>
+      <div class="clinic-summary">The Aesthetics Club is an award-winning multi-site medical aesthetics group founded in 2018 by registered nurse and independent prescriber Fiona Ross. 5 locations: Glasgow Bearsden, Glasgow Newton Mearns, London Notting Hill, Edinburgh Stockbridge, and Auchterarder (Gleneagles Hotel concession). Also operates an in-house Skin Academy training programme and an e-commerce skincare store. Partnerships include Soho House and Barry's Bootcamp. Currently targeting £3M+ annual revenue after 100%+ growth in 2024. International expansion (US, UAE) under consideration.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Press &amp; Recognition</div>
+      <div class="press-row">
+        <div class="press-item">The Herald Scotland (June 2024) — "Former nurse to hit £3m turnover with skincare company" <em>Full Monday Interview</em></div>
+        <div class="press-item">Quine Magazine (Aug 2024) — Fiona personally recommends LYMA Laser (light-based skin tech) <em>Beauty feature</em></div>
+        <div class="press-item">British Business Bank (Sept 2024) — £250,000 IFS loan case study <em>Expansion funding confirmed</em></div>
+        <div class="press-item">Global Health &amp; Pharma Awards 2024 — Winner: Most Rejuvenating Aesthetics Clinic Group</div>
+        <div class="press-item">Scottish Aesthetics Awards 2023 — Winner: Best Nurse Practitioner / Scottish Aesthetic Nurse</div>
+        <div class="press-item">UK Aesthetics Awards 2024/2025 — Finalist: Best Clinic Scotland, Best Clinic Team UK</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="section">
+        <div class="section-title">Current Modalities</div>
+        <div class="tags">
+          <div class="tag">Morpheus8 (RF microneedling)</div>
+          <div class="tag">BBL Hero (Broadband Light/IPL)</div>
+          <div class="tag">Moxi laser resurfacing</div>
+          <div class="tag">Forma (RF skin tightening)</div>
+          <div class="tag">Forma V (vaginal rejuvenation)</div>
+          <div class="tag">Dermapen microneedling</div>
+          <div class="tag">Intraceuticals oxygen facial</div>
+          <div class="tag">Injectables (toxin, filler, PDRN)</div>
+          <div class="tag hot">LED / RLT — NOT OFFERED (Gap across all 5 sites)</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Fiona's Profile</div>
+        <div class="tags">
+          <div class="tag">Masters-qualified nurse prescriber</div>
+          <div class="tag">Trains with global KOLs</div>
+          <div class="tag">Evidence-driven (SkinCeuticals advocate)</div>
+          <div class="tag">Personal LYMA Laser user</div>
+          <div class="tag">Actively acquiring new tech partnerships</div>
+          <div class="tag">Soho House + Barry's Bootcamp partnerships</div>
+          <div class="tag">Instagram: @theaestheticsclubuk</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Personalisation Hooks</div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 1 — Personal Light Therapy Believer</div>
+        <p>Fiona personally uses the LYMA Laser at home and recommended it publicly in Quine Magazine. She already trusts light-based therapy for skin. The angle: "You already trust light therapy personally, Fiona — the Solis SUPREME 2.0 is the in-clinic, full-body professional version your clients deserve, and no one across your five locations offers it yet."</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 2 — Tech Partnership Acquisition Strategy</div>
+        <p>In The Herald interview, Fiona explicitly says she's seeking "technology brands not yet available in Scotland." The Solis SUPREME 2.0 at £899 fits her stated strategy: differentiated technology creating competitive distance. Position a roll-out across her 5 locations — Gleneagles and Notting Hill specifically, where premium positioning supports the highest add-on revenue.</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 3 — Protocol Enhancer for Existing Treatments</div>
+        <p>The SUPREME 2.0 as a post-Morpheus8 and post-BBL Hero recovery protocol makes clinical sense and elevates Fiona's flagship treatment outcomes. Position it not as a standalone device but as a results accelerator: "Clients who add RLT post-Morpheus8 recover faster, which is good for reviews, rebooking rates, and your reputation for results."</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Likely Objections &amp; Counters</div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 1 — Post-funding capital caution</div>
+        <p>Fiona recently used £250k of IFS loan funding for clinic build-outs. A further spend may feel premature. Counter: At £899, this is the lowest-cost device in any of her treatment rooms — compare to Morpheus8 (£30k+) or Moxi. The ROI case is immediate (1 session/day covers the device in 2 weeks at modest pricing). Frame it as revenue infrastructure, not capex.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 2 — Evidence standards</div>
+        <p>Fiona is Masters-qualified and values clinical evidence — she endorses SkinCeuticals explicitly for being "evidence-backed." Come prepared with peer-reviewed PBM research (collagen synthesis, post-procedure recovery, skin rejuvenation). She will want studies, not marketing claims. Have the Solis clinical evidence pack ready.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 3 — Space in treatment rooms</div>
+        <p>Notting Hill clinic may have limited floor space. Position the SUPREME 2.0 as compact and room-flow compatible — it can be used as a pre- or post-treatment add-on within an existing room, not a standalone room requirement. The Gleneagles concession and Newton Mearns sites likely have more space.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-strip">
+    <div class="contact-item">Email: <a href="mailto:fiona@theaestheticsclub.co.uk">fiona@theaestheticsclub.co.uk</a></div>
+    <div class="contact-item">Website: <a href="https://theaestheticsclub.co.uk" target="_blank">theaestheticsclub.co.uk</a></div>
+    <div class="contact-item">Instagram: <a href="https://instagram.com/theaestheticsclubuk" target="_blank">@theaestheticsclubuk</a></div>
+    <div class="contact-item">LinkedIn: <a href="https://www.linkedin.com/in/fiona-ross-a4a986aa/" target="_blank">fiona-ross-a4a986aa</a></div>
+    <div class="contact-item">Status: <span style="color:#c9a96e;font-weight:700;">In Progress</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">Solis Therapy · Confidential Prospect Dossier · Feb 2026</div>
+    <div class="footer-right">Prepared by Falcon GTM</div>
+  </div>
+
+</div>
+</body>
+</html>

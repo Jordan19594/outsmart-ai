@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr Kowsar Hoque — Aesthetics HQ London | Solis Therapy Dossier</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #f7f5f2; color: #1a1a1a; }
+  .page { max-width: 900px; margin: 0 auto; background: #fff; }
+  .header { background: #0f1923; padding: 40px 48px 36px; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -40px; top: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.03); }
+  .solis-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e; border: 1px solid #c9a96e; padding: 4px 10px; margin-bottom: 28px; }
+  .lead-name { font-size: 36px; font-weight: 400; color: #fff; letter-spacing: -0.5px; line-height: 1.1; }
+  .lead-company { font-family: 'Arial', sans-serif; font-size: 14px; color: #8a9aa8; letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+  .lead-meta { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+  .meta-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #6b7e8c; }
+  .meta-item span { color: #c9a96e; font-weight: 600; }
+  .score-bar { background: #0f1923; padding: 0 48px 32px; display: flex; align-items: center; gap: 32px; border-bottom: 3px solid #c9a96e; }
+  .score-circle { width: 72px; height: 72px; border-radius: 50%; background: #c9a96e; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+  .score-circle .num { font-family: 'Arial', sans-serif; font-size: 26px; font-weight: 700; color: #0f1923; line-height: 1; }
+  .score-circle .label { font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700; color: #0f1923; text-transform: uppercase; letter-spacing: 0.5px; }
+  .score-details { flex: 1; }
+  .tier-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #0f1923; background: #c9a96e; padding: 3px 10px; margin-bottom: 8px; }
+  .recommended { font-family: 'Arial', sans-serif; font-size: 13px; color: #8a9aa8; }
+  .recommended strong { color: #fff; }
+  .body { padding: 40px 48px; }
+  .section { margin-bottom: 36px; }
+  .section-title { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #c9a96e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #f0ebe4; }
+  .clinic-summary { font-size: 15px; line-height: 1.7; color: #2c2c2c; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-family: 'Arial', sans-serif; font-size: 11px; color: #3a3a3a; background: #f7f5f2; border: 1px solid #e0dbd4; padding: 4px 10px; }
+  .tag.highlight { background: #fdf6ec; border-color: #c9a96e; color: #8a6a2a; }
+  .hook-card { background: #fdf6ec; border-left: 3px solid #c9a96e; padding: 14px 16px; margin-bottom: 12px; }
+  .hook-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .hook-num { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #c9a96e; margin-bottom: 6px; }
+  .obj-card { background: #f9f8f7; border-left: 3px solid #d4d0cb; padding: 14px 16px; margin-bottom: 12px; }
+  .obj-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .obj-label { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #f0ebe4; margin-bottom: 36px; }
+  .stat { background: #fff; padding: 20px 16px; text-align: center; }
+  .stat-val { font-size: 22px; font-weight: 400; color: #0f1923; margin-bottom: 4px; }
+  .stat-key { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #888; }
+  .bio-block { background: #f7f5f2; padding: 16px 20px; border-left: 3px solid #0f1923; margin-bottom: 16px; }
+  .bio-block p { font-size: 14px; line-height: 1.7; color: #2c2c2c; }
+  .contact-strip { background: #0f1923; padding: 20px 48px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .contact-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #8a9aa8; }
+  .contact-item a { color: #c9a96e; text-decoration: none; }
+  .footer { padding: 16px 48px; background: #f7f5f2; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-right { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; }
+  @media print { body { background: #fff; } .page { max-width: 100%; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="solis-badge">Solis Therapy · B2B Prospect Dossier</div>
+    <div class="lead-name">Dr Kowsar Hoque</div>
+    <div class="lead-company">Aesthetics HQ London · Kennington / Mayfair / Guildford</div>
+    <div class="lead-meta">
+      <div class="meta-item">Title: <span>Co-Founder &amp; Facial Aesthetics Surgeon</span></div>
+      <div class="meta-item">Background: <span>UCL MB BS 1996 · Vascular Surgery · 14 yrs NHS</span></div>
+      <div class="meta-item">Status: <span style="color:#e8c06a;">Replied</span></div>
+    </div>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-circle">
+      <div class="num">87</div>
+      <div class="label">ICP Score</div>
+    </div>
+    <div class="score-details">
+      <div class="tier-badge">A — Hot</div>
+      <div class="recommended">Recommended: <strong>Spectrum SUPREME 2.0 — £899</strong> (half-body panel)</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section">
+      <div class="section-title">About Dr Hoque</div>
+      <div class="bio-block">
+        <p>Dr Kowsar Hoque qualified MB BS at University College London (UCL) Medical School in 1996 and trained in London's leading NHS teaching hospitals with a specialism in <strong>vascular surgery</strong> — deep expertise in tissue perfusion, blood supply, and revascularisation. After 14 years in NHS practice, he transitioned to private aesthetics and co-founded Aesthetics HQ London with Dr Abdul Naeem. His surgical background uniquely positions him to understand — and be persuaded by — the precise cellular mechanisms by which photobiomodulation works: improved microcirculation, ATP production, and tissue healing. He is GMC-registered. Also runs a CPD-accredited training academy for doctors and dentists.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">3</div><div class="stat-key">Clinic Sites</div></div>
+      <div class="stat"><div class="stat-val">1996</div><div class="stat-key">UCL Qualified</div></div>
+      <div class="stat"><div class="stat-val">14 yrs</div><div class="stat-key">NHS Career</div></div>
+      <div class="stat"><div class="stat-val">0</div><div class="stat-key">RLT Presence</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Clinic Overview</div>
+      <div class="clinic-summary">Aesthetics HQ is a luxury, doctor-only regenerative medicine and aesthetic clinic. Positioning: "minimal luxury meets modern medicine." Every treatment is performed exclusively by doctors — no nurses or therapists. Three locations: Kennington SE11 (flagship), Mayfair, and Guildford. The clinic also runs a CPD-accredited training academy for aesthetic doctors and dentists. Pricing is premium (anti-wrinkle from £150/area; PRP face £300; IPRF £400). Client reviews consistently reference "natural results," "hidden gem," and "surgical-grade expertise."</div>
+    </div>
+
+    <div class="two-col">
+      <div class="section">
+        <div class="section-title">Treatment Menu</div>
+        <div class="tags">
+          <div class="tag">Anti-wrinkle injections</div>
+          <div class="tag">Dermal fillers (full face)</div>
+          <div class="tag">Profhilo / biostimulators</div>
+          <div class="tag">Polynucleotides (PDRN)</div>
+          <div class="tag">PRP / IPRF</div>
+          <div class="tag">Plasma Bio-Filler (autologous)</div>
+          <div class="tag">Exosome therapy</div>
+          <div class="tag">Minimal Access Facelift (MAFL)</div>
+          <div class="tag">HydraFacial / hydro-microneedling</div>
+          <div class="tag">Chemical peels</div>
+          <div class="tag highlight">No LED / RLT / energy devices — clear gap</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Clinic Profile</div>
+        <div class="tags">
+          <div class="tag">Doctor-only model</div>
+          <div class="tag">Regenerative medicine positioning</div>
+          <div class="tag">Premium (from £150/area anti-wrinkle)</div>
+          <div class="tag">Affluent S. London + Mayfair + Guildford</div>
+          <div class="tag">South Asian aesthetic specialism</div>
+          <div class="tag">Active CPD training academy</div>
+          <div class="tag">Instagram: @aestheticshqlondon</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Personalisation Hooks</div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 1 — Lead With Mechanism, Not Marketing</div>
+        <p>Dr Hoque is a former vascular surgeon — he thinks in terms of blood supply, tissue oxygenation, and cellular metabolism. Red light therapy works precisely by improving microcirculation and ATP production at the mitochondrial level. Open with the mechanism: "Photobiomodulation drives cellular energetics via cytochrome c oxidase — you'll recognise the tissue perfusion angle immediately, Dr Hoque." This is science-to-science, not a gadget pitch.</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 2 — Regenerative Medicine Is His Brand</div>
+        <p>His clinic explicitly brands itself around regenerative medicine: exosomes, PRP, IPRF, plasma bio-fillers. Photobiomodulation is clinically validated to enhance cellular regeneration, collagen synthesis, and wound healing — it belongs in a regenerative clinic. Position the SUPREME 2.0 as the device equivalent of what he already does with injectables: supporting the body's own healing response at scale.</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 3 — Body Treatment Gap</div>
+        <p>The clinic's body offering is limited (plasma bio-filler for hands/neck, PRP body/joints, chemical peels). The SUPREME 2.0 opens a standalone body skin health, post-surgical recovery, and wellness protocol revenue line. Post-MAFL facelift recovery with RLT is a credible clinical protocol that differentiates the surgical offering and extends the patient relationship beyond the procedure day.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Likely Objections &amp; Counters</div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 1 — Evidence standards (high bar)</div>
+        <p>UCL-trained surgeon, GMC-registered — he will require peer-reviewed evidence. Be ready with PubMed citations: photobiomodulation for collagen synthesis, wound healing, and anti-inflammatory effects. Lead with studies most relevant to his surgical background (post-procedure tissue healing, vascular effects of PBMT). Avoid unsubstantiated claims.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 2 — Space and integration</div>
+        <p>The Kennington flagship is a "private studio" environment — likely compact. A half-body panel needs to fit the room flow. Position it as a pre-consultation skin prep protocol or post-procedure recovery add-on that runs in an existing room between appointments, not a standalone room requirement.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 3 — Patient uptake at a low-volume premium clinic</div>
+        <p>Aesthetics HQ is doctor-led and deliberately low-volume — not a high-throughput medispa. Prepare a conservative model: 3–4 sessions/week at £75–100 per add-on covers the £899 device cost in 3–4 weeks. Position it as a premium recovery protocol (post-MAFL, post-PRP) at £75–100/session, not a commodity facial add-on.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-strip">
+    <div class="contact-item">Email: <a href="mailto:drhoque@aestheticshqlondon.com">drhoque@aestheticshqlondon.com</a></div>
+    <div class="contact-item">Website: <a href="https://aestheticshqlondon.com" target="_blank">aestheticshqlondon.com</a></div>
+    <div class="contact-item">Instagram: <a href="https://instagram.com/aestheticshqlondon" target="_blank">@aestheticshqlondon</a></div>
+    <div class="contact-item">LinkedIn: <a href="https://www.linkedin.com/in/dr-kowsar-hoque-4469a030/" target="_blank">dr-kowsar-hoque</a></div>
+    <div class="contact-item">Status: <span style="color:#c9a96e;font-weight:700;">Replied</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">Solis Therapy · Confidential Prospect Dossier · Feb 2026</div>
+    <div class="footer-right">Prepared by Falcon GTM</div>
+  </div>
+
+</div>
+</body>
+</html>

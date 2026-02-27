@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pippa O. — Nova Clinic | Solis Therapy Dossier</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #f7f5f2; color: #1a1a1a; }
+  .page { max-width: 900px; margin: 0 auto; background: #fff; }
+  .header { background: #0f1923; padding: 40px 48px 36px; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -40px; top: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.03); }
+  .solis-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e; border: 1px solid #c9a96e; padding: 4px 10px; margin-bottom: 28px; }
+  .lead-name { font-size: 36px; font-weight: 400; color: #fff; letter-spacing: -0.5px; line-height: 1.1; }
+  .lead-company { font-family: 'Arial', sans-serif; font-size: 14px; color: #8a9aa8; letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+  .lead-meta { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+  .meta-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #6b7e8c; }
+  .meta-item span { color: #c9a96e; font-weight: 600; }
+  .score-bar { background: #0f1923; padding: 0 48px 32px; display: flex; align-items: center; gap: 32px; border-bottom: 3px solid #c9a96e; }
+  .score-circle { width: 72px; height: 72px; border-radius: 50%; background: #c9a96e; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+  .score-circle .num { font-family: 'Arial', sans-serif; font-size: 26px; font-weight: 700; color: #0f1923; line-height: 1; }
+  .score-circle .label { font-family: 'Arial', sans-serif; font-size: 9px; font-weight: 700; color: #0f1923; text-transform: uppercase; letter-spacing: 0.5px; }
+  .score-details { flex: 1; }
+  .tier-badge { display: inline-block; font-family: 'Arial', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #0f1923; background: #c9a96e; padding: 3px 10px; margin-bottom: 8px; }
+  .recommended { font-family: 'Arial', sans-serif; font-size: 13px; color: #8a9aa8; }
+  .recommended strong { color: #fff; }
+  .body { padding: 40px 48px; }
+  .section { margin-bottom: 36px; }
+  .section-title { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #c9a96e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #f0ebe4; }
+  .clinic-summary { font-size: 15px; line-height: 1.7; color: #2c2c2c; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-family: 'Arial', sans-serif; font-size: 11px; color: #3a3a3a; background: #f7f5f2; border: 1px solid #e0dbd4; padding: 4px 10px; }
+  .tag.warm { background: #edfbf0; border-color: #4caf50; color: #2a6e2e; font-weight: 600; }
+  .tag.highlight { background: #fdf6ec; border-color: #c9a96e; color: #8a6a2a; }
+  .hook-card { background: #fdf6ec; border-left: 3px solid #c9a96e; padding: 14px 16px; margin-bottom: 12px; }
+  .hook-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .hook-num { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #c9a96e; margin-bottom: 6px; }
+  .obj-card { background: #f9f8f7; border-left: 3px solid #d4d0cb; padding: 14px 16px; margin-bottom: 12px; }
+  .obj-card p { font-size: 14px; line-height: 1.6; color: #2c2c2c; }
+  .obj-label { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #f0ebe4; margin-bottom: 36px; }
+  .stat { background: #fff; padding: 20px 16px; text-align: center; }
+  .stat-val { font-size: 22px; font-weight: 400; color: #0f1923; margin-bottom: 4px; }
+  .stat-key { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #888; }
+  .callout { background: #0f1923; color: #c9a96e; padding: 16px 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.6; font-family: 'Arial', sans-serif; }
+  .callout strong { color: #fff; }
+  .news-item { font-family: 'Arial', sans-serif; font-size: 13px; color: #2c2c2c; padding: 8px 12px; background: #f7f5f2; border-left: 2px solid #c9a96e; margin-bottom: 6px; }
+  .news-item em { color: #888; font-style: normal; font-size: 11px; }
+  .contact-strip { background: #0f1923; padding: 20px 48px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .contact-item { font-family: 'Arial', sans-serif; font-size: 12px; color: #8a9aa8; }
+  .contact-item a { color: #c9a96e; text-decoration: none; }
+  .footer { padding: 16px 48px; background: #f7f5f2; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-right { font-family: 'Arial', sans-serif; font-size: 10px; color: #aaa; }
+  @media print { body { background: #fff; } .page { max-width: 100%; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="solis-badge">Solis Therapy · B2B Prospect Dossier</div>
+    <div class="lead-name">Pippa O.</div>
+    <div class="lead-company">Nova Aesthetic Clinic · Greenwich, SE London</div>
+    <div class="lead-meta">
+      <div class="meta-item">Title: <span>Clinic Director &amp; Founder (est. Nov 2014)</span></div>
+      <div class="meta-item">Industry: <span>Aesthetics &amp; Beauty</span></div>
+      <div class="meta-item">Education: <span>BSc — University of Kent</span></div>
+    </div>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-circle">
+      <div class="num">87</div>
+      <div class="label">ICP Score</div>
+    </div>
+    <div class="score-details">
+      <div class="tier-badge">A — Hot</div>
+      <div class="recommended">Recommended: <strong>Spectrum SUPREME 2.0 — £899</strong> (half-body panel)</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="callout">
+      <strong>Key signal:</strong> Nova already offers Celluma LED therapy (£50/session, listed in Gold VIP Membership). Pippa's Instagram posts about "collagen production and cellular repair via photobiomodulation." The clinic just rebranded in <strong>Feb 2026</strong> as a "luxury cosmetic &amp; wellness space" — and was featured in the <strong>Daily Mail</strong> the same week. <strong>The timing couldn't be better.</strong>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">10k+</div><div class="stat-key">Clients on Record</div></div>
+      <div class="stat"><div class="stat-val">4.95★</div><div class="stat-key">2,187 Reviews</div></div>
+      <div class="stat"><div class="stat-val">10.5k</div><div class="stat-key">Instagram Followers</div></div>
+      <div class="stat"><div class="stat-val">Feb '26</div><div class="stat-key">Brand Rebrand</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Clinic Overview</div>
+      <div class="clinic-summary">Nova Aesthetic Clinic is a multi-award-winning, CQC-registered medical aesthetic and skin clinic at 3 College Approach, Greenwich SE10. Operated by Pippa O. since November 2014 (11+ years). The clinic's flagship treatment is Endolift (the non-surgical laser facelift, £2,500–£3,500) — featured in the Daily Mail (Feb 2026) alongside a Chelsea TV celebrity. The clinic runs a VIP Membership Programme (Silver £85/mo, Gold £200/mo), its own skincare brand (x-nova-clinic.com), and an extensive device suite spanning 6+ laser systems, EmSculpt NEO, HIFU, and cryolipolysis. Rebranded February 2026 as a "luxury cosmetic &amp; wellness space."</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Recent News</div>
+      <div class="news-item">Daily Mail (Feb 20, 2026) — Nova Clinic featured for Endolift 'invisible facelift' treatment on Chelsea TV celebrity <em>National press exposure</em></div>
+      <div class="news-item">Brand redesign launched Feb 2026 — repositioning as "luxury cosmetic &amp; wellness space" <em>Active strategic pivot toward wellness</em></div>
+      <div class="news-item">VIP Membership Programme 2026 — Silver £85/mo, Gold £200/mo launched <em>Recurring revenue model</em></div>
+      <div class="news-item">Own skincare brand launched (x-nova-clinic.com) <em>Revenue diversification</em></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Existing Modalities (Technology-Heavy Clinic)</div>
+      <div class="tags">
+        <div class="tag warm">Celluma LED therapy — £50/session (active, in Gold VIP membership)</div>
+        <div class="tag">Endolift (fibre laser facelift)</div>
+        <div class="tag">eCO2 fractional laser</div>
+        <div class="tag">LaseMD Ultra (Lutronic thulium laser)</div>
+        <div class="tag">Lutronic Genius RF microneedling</div>
+        <div class="tag">Derma V vascular laser</div>
+        <div class="tag">Ultraformer III HIFU</div>
+        <div class="tag">EmSculpt NEO</div>
+        <div class="tag">EmTone / EmSella</div>
+        <div class="tag">CoolShaping 2 (cryolipolysis)</div>
+        <div class="tag">LPG Endermolift + Lipomassage</div>
+        <div class="tag">Injectables (toxin, filler, PRP, Profhilo, PDRN)</div>
+        <div class="tag highlight">Gap: No standalone half/full-body clinical RLT panel</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Personalisation Hooks</div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 1 — Upgrade From Celluma to Clinical-Grade</div>
+        <p>Nova already charges £50/session for Celluma LED — a small curved panel treating one area at a time. The Solis SUPREME 2.0 is a direct upgrade: half-body coverage at clinical irradiance in a single 10–20 minute session. This isn't a new concept — it's making what Pippa already sells five times more powerful, more marketable, and more premium. The membership tier could include SUPREME 2.0 sessions at £75+ vs. the current £50 Celluma.</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 2 — Wellness Rebrand Timing</div>
+        <p>Nova just rebranded as a "luxury cosmetic &amp; wellness space" in February 2026. The SUPREME 2.0 is exactly the device that makes that positioning real: a premium red light therapy panel photographs beautifully, generates social content, signals wellness sophistication, and adds a recovery ritual to the client experience. It's the single device that most efficiently communicates "luxury wellness" to a client walking through the door.</p>
+      </div>
+
+      <div class="hook-card">
+        <div class="hook-num">Hook 3 — Post-Procedure Recovery Protocol</div>
+        <p>Nova's highest-revenue treatments (Endolift £2,500–3,500, eCO2 £800, Genius RF £750/session) all have recovery periods where red light therapy is clinically validated to reduce downtime, accelerate healing, and enhance results. Position the SUPREME 2.0 as a protocol addition that makes Pippa's most expensive treatments even better — and gives her a post-procedure add-on that commands £75–100 per session with zero consumables.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Likely Objections &amp; Counters</div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 1 — "We already have Celluma LED"</div>
+        <p>Celluma is a localised, single-area device. The SUPREME 2.0 delivers half-body coverage at clinical photon density — it is a categorically different treatment. Celluma is an add-on; SUPREME 2.0 is a standalone revenue line. Different use case, different patient journey, different price point. And at £899 vs. a Lutronic Genius at £30k+, it's the lowest-cost device in the room.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 2 — Device saturation / room space</div>
+        <p>Nova already has 10+ devices including EmSculpt, HIFU, cryolipolysis, multiple laser systems. She may feel the clinic is at device capacity. Counter: the SUPREME 2.0 is a panel that can be used in any existing room as a pre- or post-treatment protocol — no dedicated room required. It slots into the existing client flow rather than requiring a room block of its own.</p>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-label">Objection 3 — Credibility vs. consumer wellness trend</div>
+        <p>Pippa runs a medically-led, CQC-registered clinic. She may be cautious about anything that reads as consumer wellness rather than clinical. Lead with Solis's award-winning status, the photobiomodulation science (which she already posts about on Instagram), and position this as the same modality she already communicates to her clients — just at professional scale.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-strip">
+    <div class="contact-item">Email: <a href="mailto:pippa@novaclinic.co.uk">pippa@novaclinic.co.uk</a></div>
+    <div class="contact-item">Website: <a href="https://novaclinic.co.uk" target="_blank">novaclinic.co.uk</a></div>
+    <div class="contact-item">Instagram: <a href="https://instagram.com/novaclinicuk" target="_blank">@novaclinicuk (10.5k followers)</a></div>
+    <div class="contact-item">LinkedIn: <a href="https://www.linkedin.com/in/pippa-o-75ba4b11a/" target="_blank">pippa-o-75ba4b11a</a></div>
+    <div class="contact-item">Status: <span style="color:#c9a96e;font-weight:700;">Meeting Set</span></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">Solis Therapy · Confidential Prospect Dossier · Feb 2026</div>
+    <div class="footer-right">Prepared by Falcon GTM</div>
+  </div>
+
+</div>
+</body>
+</html>
